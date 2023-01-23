@@ -3,7 +3,43 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Domain", "DigitalBank.Domain\DigitalBank.Domain.csproj", "{9D8D3318-2BD4-43D8-8177-5DB79C5037EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Application", "DigitalBank.Application\DigitalBank.Application.csproj", "{D7CE42D9-CF3B-467E-A9BB-11F0F5E6F0D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Infra.Data", "DigitalBank.Infra.Data\DigitalBank.Infra.Data.csproj", "{7F249A8A-FA68-4E0A-9AF2-DF3DE5350F00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Infra.ioC", "DigitalBank.Infra.ioC\DigitalBank.Infra.ioC.csproj", "{276C64C3-709F-4A46-B87B-DB4DD3342891}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Api", "DigitalBank.Api\DigitalBank.Api.csproj", "{195C0088-966B-4972-A3B2-D8837535933D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D8D3318-2BD4-43D8-8177-5DB79C5037EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D8D3318-2BD4-43D8-8177-5DB79C5037EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D8D3318-2BD4-43D8-8177-5DB79C5037EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D8D3318-2BD4-43D8-8177-5DB79C5037EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7CE42D9-CF3B-467E-A9BB-11F0F5E6F0D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7CE42D9-CF3B-467E-A9BB-11F0F5E6F0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7CE42D9-CF3B-467E-A9BB-11F0F5E6F0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7CE42D9-CF3B-467E-A9BB-11F0F5E6F0D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F249A8A-FA68-4E0A-9AF2-DF3DE5350F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F249A8A-FA68-4E0A-9AF2-DF3DE5350F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F249A8A-FA68-4E0A-9AF2-DF3DE5350F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F249A8A-FA68-4E0A-9AF2-DF3DE5350F00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{276C64C3-709F-4A46-B87B-DB4DD3342891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{276C64C3-709F-4A46-B87B-DB4DD3342891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{276C64C3-709F-4A46-B87B-DB4DD3342891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{276C64C3-709F-4A46-B87B-DB4DD3342891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{195C0088-966B-4972-A3B2-D8837535933D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{195C0088-966B-4972-A3B2-D8837535933D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{195C0088-966B-4972-A3B2-D8837535933D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{195C0088-966B-4972-A3B2-D8837535933D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

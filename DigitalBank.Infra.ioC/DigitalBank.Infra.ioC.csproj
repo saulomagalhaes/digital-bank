@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalBank.Application\DigitalBank.Application.csproj" />
+    <ProjectReference Include="..\DigitalBank.Domain\DigitalBank.Domain.csproj" />
+    <ProjectReference Include="..\DigitalBank.Infra.Data\DigitalBank.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
