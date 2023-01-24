@@ -22,6 +22,12 @@ public class PersonRepository : IPersonRepository
     {
         return await _db.People.ToListAsync();
     }
+    public async Task<Person> CreateAsync(Person person)
+    {
+        _db.People.Add(person);
+        await _db.SaveChangesAsync();
+        return person;
+    }
     public async Task UpdateAsync(Person person)
     {
         _db.Update(person);
