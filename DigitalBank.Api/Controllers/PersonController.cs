@@ -19,8 +19,8 @@ public class PersonController : ControllerBase
     public async Task<IActionResult> CreateAsync([FromBody] CreatePersonDto personDto)
     {
         var result = await _personService.CreateAsync(personDto);
-        if(result.Success)
-            return CreatedAtAction(nameof(GetByIdAsync), new {Id = result.Data.Id}, result.Data);
+        if (result.Success)
+            return Created($"https://localhost:7200/api/Person/{result.Data.Id}", result.Data);
         return BadRequest(new {result.Message, result.Errors});
     }
 
@@ -38,7 +38,7 @@ public class PersonController : ControllerBase
     {
         var result = await _personService.GetAllAsync();
         if (result.Success)
-            return Ok(result);
+            return Ok(result.Data);
         return BadRequest();
     }
     [HttpGet("{id}")]
@@ -46,7 +46,7 @@ public class PersonController : ControllerBase
     {
         var result = await _personService.GetByIdAsync(id);
         if (result.Success)
-            return Ok(result);
+            return Ok(result.Data);
         return NotFound(new { result.Message, result.Errors });
     }
 
