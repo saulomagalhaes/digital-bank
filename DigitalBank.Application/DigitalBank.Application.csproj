@@ -7,7 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Services\ResultService.cs~RF25b9c78a.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DigitalBank.Domain\DigitalBank.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mappings\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
   </ItemGroup>
 
 </Project>
