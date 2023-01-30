@@ -20,7 +20,7 @@ public class PersonController : ControllerBase
     {
         var result = await _personService.CreateAsync(personDto);
         if (result.Success)
-            return Created($"https://localhost:7200/api/Person/{result.Data.Id}", result.Data);
+            return CreatedAtAction(nameof(GetByIdAsync), new {id = result.Data.Id}, result.Data);
         return BadRequest(new {result.Message, result.Errors});
     }
 
@@ -42,6 +42,7 @@ public class PersonController : ControllerBase
         return BadRequest();
     }
     [HttpGet("{id}")]
+    [ActionName(nameof(GetByIdAsync))]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
         var result = await _personService.GetByIdAsync(id);
