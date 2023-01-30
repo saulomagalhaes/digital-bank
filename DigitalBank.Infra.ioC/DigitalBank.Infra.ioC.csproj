@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DigitalBank.Application\DigitalBank.Application.csproj" />
     <ProjectReference Include="..\DigitalBank.Domain\DigitalBank.Domain.csproj" />
     <ProjectReference Include="..\DigitalBank.Infra.Data\DigitalBank.Infra.Data.csproj" />
