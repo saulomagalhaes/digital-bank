@@ -7,14 +7,15 @@ public class CreatePersonDtoValidator : AbstractValidator<CreatePersonDto>
 {
 	public CreatePersonDtoValidator()
 	{
-        RuleFor(p => p.Name)
-            .NotEmpty()
-            .NotNull();
+		RuleFor(p => p.Name)
+			.NotEmpty()
+			.NotNull()
+			.WithMessage("O Name deve ser informado");
 
-        RuleFor(p => p.Email)
-            .NotEmpty()
-            .NotNull()
-            .EmailAddress();
+        RuleFor(p => p.Name)
+			.NotEmpty()
+			.NotNull()
+			.WithMessage("O Name deve ser informado");
     }
 }
 
@@ -24,11 +25,12 @@ public class UpdatePersonDtoValidator : AbstractValidator<UpdatePersonDto>
     {
         RuleFor(p => p.Name)
             .NotEmpty()
-            .NotNull();
+            .NotNull()
+            .WithMessage("O Name deve ser informado");
 
-        RuleFor(p => p.Email)
+        RuleFor(p => p.Name)
             .NotEmpty()
             .NotNull()
-            .EmailAddress();
+            .WithMessage("O Name deve ser informado");
     }
 }
