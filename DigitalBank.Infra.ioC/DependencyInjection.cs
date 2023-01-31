@@ -20,6 +20,7 @@ public static class DependencyInjection
         .AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
         services.AddScoped<IPersonRepository, PersonRepository>();
+        services.AddScoped<IAccountRepository, AccountRepository>();
 
         return services;
     }
@@ -28,6 +29,7 @@ public static class DependencyInjection
     {
         services.AddAutoMapper(typeof(PersonProfile));
         services.AddScoped<IPersonService, PersonService>();
+        services.AddScoped<IAccountService, AccountService>();
 
         return services;
     }
