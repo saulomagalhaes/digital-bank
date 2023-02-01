@@ -21,6 +21,7 @@ public static class DependencyInjection
 
         services.AddScoped<IPersonRepository, PersonRepository>();
         services.AddScoped<IAccountRepository, AccountRepository>();
+        services.AddScoped<ITransactionRepository, TransactionRepository>();
 
         return services;
     }
@@ -30,6 +31,7 @@ public static class DependencyInjection
         services.AddAutoMapper(typeof(PersonProfile));
         services.AddScoped<IPersonService, PersonService>();
         services.AddScoped<IAccountService, AccountService>();
+        services.AddScoped<ITransactionService, TransactionService>();
 
         return services;
     }
