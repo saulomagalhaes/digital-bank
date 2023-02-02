@@ -1,5 +1,6 @@
 ﻿using DigitalBank.Application.Contracts.Services;
 using DigitalBank.Application.DTOs.Person;
+using DigitalBank.Domain.FiltersDb;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalBank.Api.Controllers;
@@ -60,5 +61,14 @@ public class PersonController : ControllerBase
         if (result.Status == 400)
             return BadRequest(new { result.Message, result.Errors });
         return NotFound(new { result.Message, result.Errors });
+    }
+
+    [HttpGet("paged")]
+    public async Task<IActionResult> GetPagedAsync([FromQuery] PersonFilterDb personFilterDb)
+    {
+        var result = await _personService.GetPagedAsync(personFilterDb);
+        if(result.Success)
+            return Ok(result.Data);
+        return BadRequest();
     }
 }

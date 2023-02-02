@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using DigitalBank.Application.Contracts.Services;
+using DigitalBank.Application.DTOs;
 using DigitalBank.Application.DTOs.Person;
 using DigitalBank.Application.DTOs.Validations;
 using DigitalBank.Domain.Contracts.Repositories;
 using DigitalBank.Domain.Entities;
+using DigitalBank.Domain.FiltersDb;
 
 namespace DigitalBank.Application.Services;
 
@@ -57,6 +59,14 @@ public class PersonService : IPersonService
         
         var data = _mapper.Map<ReadPersonDto>(person);
         return ResultService.Ok(data, 200);
+    }
+
+    public async Task<ResultService<PagedBaseResponseDto<ReadPersonDto>>> GetPagedAsync(PersonFilterDb personFilterDb)
+    {
+        var peoplePaged = await _personRepository.GetPagedAsync(personFilterDb);
+        var result = new PagedBaseResponseDto<ReadPersonDto>(peoplePaged.TotalRegisters,
+                                                            _mapper.Map<List<ReadPersonDto>>(peoplePaged.Data));
+        return ResultService.Ok(result, 200);
     }
 
     public async Task<ResultService> UpdateAsync(int id, UpdatePersonDto personDto)

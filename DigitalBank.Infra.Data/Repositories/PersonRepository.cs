@@ -1,5 +1,6 @@
 ﻿using DigitalBank.Domain.Contracts.Repositories;
 using DigitalBank.Domain.Entities;
+using DigitalBank.Domain.FiltersDb;
 using DigitalBank.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,5 +39,14 @@ public class PersonRepository : IPersonRepository
     {
         _db.Remove(person);
         await _db.SaveChangesAsync();
+    }
+
+    public async Task<PagedBaseResponse<Person>> GetPagedAsync(PersonFilterDb request)
+    {
+        var people = _db.People.AsQueryable();
+        if (!string.IsNullOrEmpty(request.Name))
+            people.Where(p => p.Name.Contains(request.Name));
+
+        return await PagedBaseResponseHelper.GetResponseAsync<PagedBaseResponse<Person>, Person>(people, request);
     }
 }
