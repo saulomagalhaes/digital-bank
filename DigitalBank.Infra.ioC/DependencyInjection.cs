@@ -1,7 +1,9 @@
 ﻿using DigitalBank.Application.Contracts.Services;
 using DigitalBank.Application.Profiles;
 using DigitalBank.Application.Services;
+using DigitalBank.Domain.Contracts.Authentication;
 using DigitalBank.Domain.Contracts.Repositories;
+using DigitalBank.Infra.Data.Authentication;
 using DigitalBank.Infra.Data.Context;
 using DigitalBank.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +24,8 @@ public static class DependencyInjection
         services.AddScoped<IPersonRepository, PersonRepository>();
         services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<ITransactionRepository, TransactionRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ITokenGenerator, TokenGenerator>();
 
         return services;
     }
@@ -32,6 +36,7 @@ public static class DependencyInjection
         services.AddScoped<IPersonService, PersonService>();
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<ITransactionService, TransactionService>();
+        services.AddScoped<IUserService, UserService>();
 
         return services;
     }
