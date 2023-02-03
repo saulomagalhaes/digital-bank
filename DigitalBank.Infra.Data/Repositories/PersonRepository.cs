@@ -45,7 +45,7 @@ public class PersonRepository : IPersonRepository
     {
         var people = _db.People.AsQueryable();
         if (!string.IsNullOrEmpty(request.Name))
-            people.Where(p => p.Name.Contains(request.Name));
+           people = people.Where(p => p.Name.Contains(request.Name));
 
         return await PagedBaseResponseHelper.GetResponseAsync<PagedBaseResponse<Person>, Person>(people, request);
     }
