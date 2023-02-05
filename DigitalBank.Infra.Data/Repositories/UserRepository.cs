@@ -16,6 +16,9 @@ public class UserRepository : IUserRepository
 
     public async Task<User> GetUSerByEmailandPasswordAsync(string email, string password)
     {
-        return await _db.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+        return await _db.Users
+            .Include(u => u.userPermissions)
+            .ThenInclude(u => u.Permission)
+            .FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
     }
 }
