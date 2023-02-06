@@ -4,5 +4,5 @@ namespace DigitalBank.Domain.Contracts.Repositories;
 
 public interface IUserRepository
 {
-    Task<User> GetUSerByEmailandPasswordAsync(string email, string password);
+    Task<User> GetUserByEmailAndPasswordAsync(string email, string password);
 }

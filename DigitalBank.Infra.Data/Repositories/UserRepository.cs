@@ -14,7 +14,7 @@ public class UserRepository : IUserRepository
         _db = db;
     }
 
-    public async Task<User> GetUSerByEmailandPasswordAsync(string email, string password)
+    public async Task<User> GetUserByEmailAndPasswordAsync(string email, string password)
     {
         return await _db.Users
             .Include(u => u.userPermissions)
