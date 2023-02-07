@@ -1,9 +1,9 @@
 ﻿namespace DigitalBank.Domain.Entities;
 
-public class User
+public class Permission
 {
     public int Id { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
+    public string VisualName { get; set; }
+    public string PermissionName { get; set; }
     public ICollection<UserPermission> userPermissions { get; set; }
 }

@@ -23,5 +23,9 @@ public class UserMap : IEntityTypeConfiguration<User>
         builder.Property(u => u.Password)
             .HasColumnName("password")
             .IsRequired();
+
+        builder.HasMany(u => u.userPermissions)
+            .WithOne(up => up.User)
+            .HasForeignKey(u => u.UserId);
     }
 }

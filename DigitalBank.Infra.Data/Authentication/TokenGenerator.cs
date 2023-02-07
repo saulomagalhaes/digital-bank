@@ -11,10 +11,12 @@ public class TokenGenerator : ITokenGenerator
 {
     public dynamic Generator(User user)
     {
+        var permissions = string.Join(",", user.userPermissions.Select(x => x.Permission.PermissionName));
         var claims = new List<Claim>
         {
             new Claim("id", user.Id.ToString()),
-            new Claim("email", user.Email)
+            new Claim("email", user.Email),
+            new Claim("permissions", permissions)
         };
 
         var expires = DateTime.Now.AddDays(1);

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using DigitalBank.Domain.Contracts.Authentication;
+using DigitalBank.Api.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +52,8 @@ builder.Services.AddSwaggerGen( c =>
 
 builder.Services.AddInfra(builder.Configuration);
 builder.Services.AddServices(builder.Configuration);
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 
 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SenhaDoBanco123@"));
 builder.Services.AddAuthentication(authOptions =>
