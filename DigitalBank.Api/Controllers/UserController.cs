@@ -17,7 +17,7 @@ public class UserController : ControllerBase
 
     [HttpPost]
     [Route("login")]
-    public async Task<IActionResult> LoginAsync([FromBody] UserDto user)
+    public async Task<IActionResult> LoginAsync([FromBody] LoginUserDto user)
     {
         var result = await _userService.GenerateTokenAsync(user);
         if (result.Success)
@@ -25,5 +25,15 @@ public class UserController : ControllerBase
         if(result.Status == 400)
             return BadRequest(new { result.Message, result.Errors });
         return NotFound(new { result.Message, result.Errors });
+    }
+
+    [HttpPost]
+    [Route("register")]
+    public async Task<IActionResult> RegisterAsync([FromBody] RegisterUserDto user)
+    {
+        var result = await _userService.RegisterAsync(user);
+        if (result.Success)
+            return Ok();
+        return BadRequest();
     }
 }
