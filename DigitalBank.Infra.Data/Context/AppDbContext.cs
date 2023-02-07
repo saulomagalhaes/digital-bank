@@ -11,6 +11,7 @@ public class AppDbContext : DbContext
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<UserPermission> UserPermissions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
