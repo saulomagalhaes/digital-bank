@@ -14,6 +14,13 @@ public class UserRepository : IUserRepository
         _db = db;
     }
 
+    public async Task<User> CreateAsync(User user)
+    {
+        _db.Users.Add(user);
+        await _db.SaveChangesAsync();
+        return user;
+    }
+
     public async Task<User> GetUserByEmailAndPasswordAsync(string email, string password)
     {
         return await _db.Users
