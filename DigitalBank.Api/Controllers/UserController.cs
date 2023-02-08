@@ -34,6 +34,8 @@ public class UserController : ControllerBase
         var result = await _userService.RegisterAsync(user);
         if (result.Success)
             return Ok();
+        if(result.Status == 409)
+            return Conflict(new { result.Message, result.Errors });
         return BadRequest();
     }
 }

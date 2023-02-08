@@ -14,6 +14,11 @@ public class UserRepository : IUserRepository
         _db = db;
     }
 
+    public async Task<User> CheckEmailExists(string email)
+    {
+        return await _db.Users.FirstOrDefaultAsync(u => u.Email == email);
+    }
+
     public async Task<User> CreateAsync(User user)
     {
         _db.Users.Add(user);

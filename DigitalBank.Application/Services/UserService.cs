@@ -46,11 +46,15 @@ public class UserService : IUserService
     public async Task<ResultService> RegisterAsync(RegisterUserDto userDto)
     {
         if (userDto == null)
-            return ResultService.Fail<dynamic>("O objeto do usuário deve ser informado", 400);
+            return ResultService.Fail("O objeto do usuário deve ser informado", 400);
 
         var result = new RegisterUserDtoValidator().Validate(userDto);
         if (!result.IsValid)
-            return ResultService.RequestError<dynamic>("Problemas na validação", 400, result);
+            return ResultService.RequestError("Problemas na validação", 400, result);
+
+        var userExists = await _userRepository.CheckEmailExists(userDto.Email);
+        if (userExists != null)
+            return ResultService.Fail("Já existe uma conta cadastrada com este email", 409);
 
         var user = _mapper.Map<User>(userDto);
         var userData = await _userRepository.CreateAsync(user);
