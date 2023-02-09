@@ -28,19 +28,19 @@ public class UserService : IUserService
         _mapper = mapper;
     }
 
-    public async Task<ResultService<dynamic>> GenerateTokenAsync(LoginUserDto userDto)
+    public async Task<ResultService<TokenData>> GenerateTokenAsync(LoginUserDto userDto)
     {
         if (userDto == null)
-            return ResultService.Fail<dynamic>("O objeto do usuário deve ser informado", 400);
+            return ResultService.Fail<TokenData>("O objeto do usuário deve ser informado", 400);
 
         var result = new LoginUserDtoValidator().Validate(userDto);
         if (!result.IsValid)
-            return ResultService.RequestError<dynamic>("Problemas na validação", 400, result);
+            return ResultService.RequestError<TokenData>("Problemas na validação", 400, result);
 
         var user = await _userRepository.GetUserByEmailAndPasswordAsync(userDto.Email, userDto.Password);
         if (user == null)
-            return ResultService.Fail<dynamic>("Usuário ou senha inválidos", 404);
-        return ResultService.Ok<dynamic>(_tokenGenerator.Generator(user), 200);
+            return ResultService.Fail<TokenData>("Usuário ou senha inválidos", 404);
+        return ResultService.Ok(_tokenGenerator.Generator(user), 200);
     }
 
     public async Task<ResultService> RegisterAsync(RegisterUserDto userDto)
