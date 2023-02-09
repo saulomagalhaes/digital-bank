@@ -10,6 +10,10 @@ public class ResultService
     public ICollection<ErrorValidation> Errors { get; set; }
     public int Status { get; set; }
 
+    public static ICollection<ErrorValidation> CreateErrors(ValidationResult validationResult)
+    {
+        return validationResult.Errors.Select(x => new ErrorValidation { Field = x.PropertyName, Message = x.ErrorMessage }).ToList();
+    }
     public static ResultService RequestError(string message, int status, ValidationResult validationResult)
     {
         return new ResultService
@@ -17,7 +21,7 @@ public class ResultService
             Success = false,
             Message = message,
             Status = status,
-            Errors = validationResult.Errors.Select(x => new ErrorValidation { Field = x.PropertyName, Message = x.ErrorMessage }).ToList()
+            Errors = CreateErrors(validationResult)
         };
     }
 
@@ -28,7 +32,7 @@ public class ResultService
             Success = false,
             Message = message,
             Status = status,
-            Errors = validationResult.Errors.Select(x => new ErrorValidation { Field = x.PropertyName, Message = x.ErrorMessage }).ToList()
+            Errors = CreateErrors(validationResult)
         };
     }
 
