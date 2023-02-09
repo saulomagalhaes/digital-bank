@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Domain", "DigitalBank.Domain\DigitalBank.Domain.csproj", "{9D8D3318-2BD4-43D8-8177-5DB79C5037EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBank.Domain", "DigitalBank.Domain\DigitalBank.Domain.csproj", "{9D8D3318-2BD4-43D8-8177-5DB79C5037EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Application", "DigitalBank.Application\DigitalBank.Application.csproj", "{D7CE42D9-CF3B-467E-A9BB-11F0F5E6F0D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBank.Application", "DigitalBank.Application\DigitalBank.Application.csproj", "{D7CE42D9-CF3B-467E-A9BB-11F0F5E6F0D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Infra.Data", "DigitalBank.Infra.Data\DigitalBank.Infra.Data.csproj", "{7F249A8A-FA68-4E0A-9AF2-DF3DE5350F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBank.Infra.Data", "DigitalBank.Infra.Data\DigitalBank.Infra.Data.csproj", "{7F249A8A-FA68-4E0A-9AF2-DF3DE5350F00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Infra.ioC", "DigitalBank.Infra.ioC\DigitalBank.Infra.ioC.csproj", "{276C64C3-709F-4A46-B87B-DB4DD3342891}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBank.Infra.ioC", "DigitalBank.Infra.ioC\DigitalBank.Infra.ioC.csproj", "{276C64C3-709F-4A46-B87B-DB4DD3342891}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Api", "DigitalBank.Api\DigitalBank.Api.csproj", "{195C0088-966B-4972-A3B2-D8837535933D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBank.Api", "DigitalBank.Api\DigitalBank.Api.csproj", "{195C0088-966B-4972-A3B2-D8837535933D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.Tests", "DigitalBank.Tests\DigitalBank.Tests.csproj", "{BE1122AD-5AC1-41B3-84F0-35CFD5BBDBBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{195C0088-966B-4972-A3B2-D8837535933D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195C0088-966B-4972-A3B2-D8837535933D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{195C0088-966B-4972-A3B2-D8837535933D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE1122AD-5AC1-41B3-84F0-35CFD5BBDBBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE1122AD-5AC1-41B3-84F0-35CFD5BBDBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE1122AD-5AC1-41B3-84F0-35CFD5BBDBBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE1122AD-5AC1-41B3-84F0-35CFD5BBDBBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
