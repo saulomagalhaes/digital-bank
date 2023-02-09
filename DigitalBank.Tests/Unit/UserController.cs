@@ -16,7 +16,7 @@ public class UserControllerTest
         // Arrange 
         var userServiceMock = new Mock<IUserService>();
         userServiceMock.Setup(x => x.GenerateTokenAsync(It.IsAny<LoginUserDto>()))
-            .ReturnsAsync(new ResultService<dynamic> {
+            .ReturnsAsync(new ResultService<TokenData> {
                 Success = true, Data = new TokenData { token = "token" }
             });
 
