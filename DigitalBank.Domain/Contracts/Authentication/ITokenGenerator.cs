@@ -4,5 +4,5 @@ namespace DigitalBank.Domain.Contracts.Authentication;
 
 public interface ITokenGenerator
 {
-    dynamic Generator(User user);
+    TokenData Generator(User user);
 }

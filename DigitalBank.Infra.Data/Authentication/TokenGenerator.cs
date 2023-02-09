@@ -9,7 +9,7 @@ namespace DigitalBank.Infra.Data.Authentication;
 
 public class TokenGenerator : ITokenGenerator
 {
-    public dynamic Generator(User user)
+    public TokenData Generator(User user)
     {
         var permissions = string.Join(",", user.userPermissions.Select(x => x.Permission.PermissionName));
         var claims = new List<Claim>
@@ -30,10 +30,6 @@ public class TokenGenerator : ITokenGenerator
 
         var token = new JwtSecurityTokenHandler().WriteToken(tokenData);
 
-        return new
-        {
-            acess_token = token,
-            expirations = expires
-        };
+        return new TokenData {token = token};
     }
 }
