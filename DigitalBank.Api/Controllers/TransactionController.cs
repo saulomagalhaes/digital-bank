@@ -1,23 +1,29 @@
 ﻿using DigitalBank.Application.Contracts.Services;
 using DigitalBank.Application.DTOs.Transaction;
+using DigitalBank.Domain.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalBank.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class TransactionController : ControllerBase
+public class TransactionController : BaseController
 {
     private readonly ITransactionService _transactionService;
+    private readonly ICurrentUser _currentUser;
+    private readonly List<string> _permissionUser;
+    private List<string> _permissionNeeded = new List<string>() { "Admin" };
 
-    public TransactionController(ITransactionService transactionService)
+    public TransactionController(ITransactionService transactionService, ICurrentUser currentUser)
     {
         _transactionService = transactionService;
+        _currentUser = currentUser;
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateAsync([FromBody] CreateTransactionDto transactionDto)
     {
+        _permissionNeeded.Add("User");
         var result = await _transactionService.CreateAsync(transactionDto);
         if (result.Success)
             return CreatedAtAction(nameof(GetByIdAsync), new { id = result.Data.Id }, result.Data);
@@ -27,6 +33,7 @@ public class TransactionController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
+        _permissionNeeded.Add("User");
         var result = await _transactionService.DeleteAsync(id);
         if (result.Success)
             return NoContent();
@@ -36,6 +43,7 @@ public class TransactionController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllAsync()
     {
+        _permissionNeeded.Add("User");
         var result = await _transactionService.GetAllAsync();
         if (result.Success)
             return Ok(result.Data);
@@ -46,6 +54,7 @@ public class TransactionController : ControllerBase
     [ActionName(nameof(GetByIdAsync))]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
+        _permissionNeeded.Add("User");
         var result = await _transactionService.GetByIdAsync(id);
         if (result.Success)
             return Ok(result.Data);

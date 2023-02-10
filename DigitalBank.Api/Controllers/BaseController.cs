@@ -18,8 +18,7 @@ public class BaseController : ControllerBase
     {
         var obj = new
         {
-            code = "permission_denied",
-            message = "usuário não tem permissão para acessar esse recurso"
+            message = "Usuário não autorizado"
         };
 
         return new ObjectResult(obj) { StatusCode = 403 };

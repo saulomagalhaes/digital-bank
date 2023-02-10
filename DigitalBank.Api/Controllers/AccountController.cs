@@ -1,18 +1,23 @@
 ﻿using DigitalBank.Application.Contracts.Services;
 using DigitalBank.Application.DTOs.Account;
+using DigitalBank.Domain.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalBank.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AccountController : ControllerBase
+public class AccountController : BaseController
 {
     private readonly IAccountService _accountService;
+    private readonly ICurrentUser _currentUser;
+    private readonly List<string> _permissionUser;
+    private List<string> _permissionNeeded = new List<string>() { "Admin" };
 
-    public AccountController(IAccountService accountService)
+    public AccountController(IAccountService accountService, ICurrentUser currentUser)
     {
         _accountService = accountService;
+        _currentUser = currentUser;
     }
 
     [HttpPost]
@@ -46,6 +51,7 @@ public class AccountController : ControllerBase
     [ActionName(nameof(GetByIdAsync))]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
+        _permissionNeeded.Add("User");
         var result = await _accountService.GetByIdAsync(id);
         if(result.Success)
             return Ok(result);
