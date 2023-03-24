@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A6E30E85-88E0-402E-8F2A-07DCE7864B96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{899FCEBB-B59E-4004-934D-FD5D1AAA1692}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBank.API", "src\DigitalBank.API\DigitalBank.API.csproj", "{F931E073-BE84-402D-9916-C324DC427A54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F931E073-BE84-402D-9916-C324DC427A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F931E073-BE84-402D-9916-C324DC427A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F931E073-BE84-402D-9916-C324DC427A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F931E073-BE84-402D-9916-C324DC427A54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F931E073-BE84-402D-9916-C324DC427A54} = {A6E30E85-88E0-402E-8F2A-07DCE7864B96}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05FE7BA3-E88C-4A86-990C-1BCA676EAAC3}
+	EndGlobalSection
+EndGlobal
