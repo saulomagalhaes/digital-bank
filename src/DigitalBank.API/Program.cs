@@ -1,4 +1,5 @@
 using DigitalBank.Infra.Context;
+using Infra.IoC;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DigitalBank");
 builder.Services.AddDbContext<DigitalBankContext>(options => 
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+// Add Infra
+builder.Services.AddInfra(builder.Configuration);
+
+// Add Services
+builder.Services.AddServices(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

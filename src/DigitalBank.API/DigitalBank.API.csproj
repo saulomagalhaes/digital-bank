@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DigitalBank.Infra\DigitalBank.Infra.csproj" />
+    <ProjectReference Include="..\Infra.IoC\Infra.IoC.csproj" />
   </ItemGroup>
 
 </Project>
