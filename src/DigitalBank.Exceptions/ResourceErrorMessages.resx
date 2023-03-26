@@ -123,6 +123,9 @@
   <data name="EMAIL_USUARIO_VAZIO" xml:space="preserve">
     <value>O email do usuário deve ser informado.</value>
   </data>
+  <data name="ERRO_DESCONHECIDO" xml:space="preserve">
+    <value>Erro desconhecido.</value>
+  </data>
   <data name="NOME_USUARIO_VAZIO" xml:space="preserve">
     <value>O nome do usuário deve ser informado.</value>
   </data>

@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DigitalBank.Communication\DigitalBank.Communication.csproj" />
+    <ProjectReference Include="..\DigitalBank.Exceptions\DigitalBank.Exceptions.csproj" />
     <ProjectReference Include="..\DigitalBank.Infra\DigitalBank.Infra.csproj" />
     <ProjectReference Include="..\Infra.IoC\Infra.IoC.csproj" />
   </ItemGroup>

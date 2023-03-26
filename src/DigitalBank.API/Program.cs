@@ -1,3 +1,4 @@
+using DigitalBank.API.Filters;
 using DigitalBank.Infra.Context;
 using Infra.IoC;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add Filter Exceptions
+builder.Services.AddMvc(options => options.Filters.Add(typeof(FilterExceptions)));
 
 var app = builder.Build();
 

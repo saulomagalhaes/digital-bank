@@ -1,11 +1,13 @@
 ﻿using DigitalBank.Communication.Requests;
+using DigitalBank.Exceptions.ExceptionsBase;
 
 namespace DigitalBank.Application.UseCases.User.Register;
 
 public class UserRegisterUseCase
 {
-    public Task Execute(RequestRegisterUserJson request)
+    public async Task Execute(RequestRegisterUserJson request)
     {
+        Validate(request);
 
     }
 
@@ -16,7 +18,7 @@ public class UserRegisterUseCase
         if (!validator.IsValid)
         {
             var errorMessages = validator.Errors.Select(error => error.ErrorMessage).ToList();
-            throw new Exception();
+            throw new ValidationsErrorException(errorMessages);
         }
     }
 }
