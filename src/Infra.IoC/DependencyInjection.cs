@@ -1,4 +1,6 @@
-﻿using DigitalBank.Domain.Repositories;
+﻿using DigitalBank.Application.Services.Cryptography;
+using DigitalBank.Application.UseCases.User.Register;
+using DigitalBank.Domain.Repositories;
 using DigitalBank.Infra.Context;
 using DigitalBank.Infra.Repositories;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +21,8 @@ public static class DependencyInjection
 
     public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped(option => new PasswordEncrypter());
+        services.AddScoped<IUserRegisterUseCase, UserRegisterUseCase>();
         return services;
     }
 }
