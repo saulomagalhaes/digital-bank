@@ -1,11 +1,12 @@
 using DigitalBank.API.Filters;
+using DigitalBank.Application.Services.Automapper;
 using DigitalBank.Infra.Context;
 using Infra.IoC;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DataBase.
+// Add DataBase
 var connectionString = builder.Configuration.GetConnectionString("DigitalBank");
 builder.Services.AddDbContext<DigitalBankContext>(options => 
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
@@ -15,6 +16,12 @@ builder.Services.AddInfra(builder.Configuration);
 
 // Add Services
 builder.Services.AddServices(builder.Configuration);
+
+// Add Automapper
+builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(config =>
+{
+    config.AddProfile(new AutomapperConfig());
+}).CreateMapper());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
