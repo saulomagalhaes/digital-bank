@@ -27,6 +27,18 @@ public class FilterExceptions : IExceptionFilter
         {
             HandleValidationErrorException(context);
         }
+        else if (context.Exception is LoginInvalidException)
+        {
+            HandleLoginInvalidException(context);
+        }
+    }
+
+    private void HandleLoginInvalidException(ExceptionContext context)
+    {
+        var errorLogin = context.Exception as LoginInvalidException;
+
+        context.HttpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        context.Result = new ObjectResult(new ResponseErrorJson(errorLogin.Message));
     }
 
     private void HandleValidationErrorException(ExceptionContext context)

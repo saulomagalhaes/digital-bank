@@ -1,5 +1,6 @@
 ﻿using DigitalBank.Application.Services.Cryptography;
 using DigitalBank.Application.Services.Token;
+using DigitalBank.Application.UseCases.User.Login;
 using DigitalBank.Application.UseCases.User.Register;
 using DigitalBank.Domain.Repositories;
 using DigitalBank.Infra.Context;
@@ -27,7 +28,9 @@ public static class DependencyInjection
 
         services.AddScoped(option => new PasswordEncrypter())
             .AddScoped(option => new TokenController(int.Parse(sectionLifeTimeToken.Value), sectionKeyToken.Value));
-        services.AddScoped<IUserRegisterUseCase, UserRegisterUseCase>();
+
+        services.AddScoped<IUserRegisterUseCase, UserRegisterUseCase>()
+            .AddScoped<ILoginUseCase, LoginUseCase>();
         return services;
     }
 }
