@@ -33,13 +33,13 @@ public class FilterExceptions : IExceptionFilter
     {
         var validationErrors = context.Exception as ValidationsErrorException;
 
-        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
         context.Result = new ObjectResult(new ResponseErrorJson(validationErrors.ErrorMessages)); 
     }
 
     private void ThrowUnknownError(ExceptionContext context)
     {
-        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
         context.Result = new ObjectResult(new ResponseErrorJson(ResourceErrorMessages.ERRO_DESCONHECIDO));
     }
 }

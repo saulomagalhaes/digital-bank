@@ -24,12 +24,14 @@ builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(config
 }).CreateMapper());
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Add Filter Exceptions
 builder.Services.AddMvc(options => options.Filters.Add(typeof(FilterExceptions)));
+
+// Add route lowercase
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 

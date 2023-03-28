@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DigitalBank.Application\DigitalBank.Application.csproj" />
     <ProjectReference Include="..\DigitalBank.Communication\DigitalBank.Communication.csproj" />
     <ProjectReference Include="..\DigitalBank.Exceptions\DigitalBank.Exceptions.csproj" />

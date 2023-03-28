@@ -18,13 +18,14 @@ public class UserRegisterUseCase : IUserRegisterUseCase
     private readonly PasswordEncrypter _passwordEncrypter;
     private readonly TokenController _tokenController;
 
-    public UserRegisterUseCase(IUserWriteOnlyRepository userWriteRepository, IMapper mapper, IUnitOfWork unitOfWork, PasswordEncrypter passwordEncrypter, IUserReadOnlyRepository userReadOnlyRepository)
+    public UserRegisterUseCase(IUserWriteOnlyRepository userWriteRepository, IMapper mapper, IUnitOfWork unitOfWork, PasswordEncrypter passwordEncrypter, IUserReadOnlyRepository userReadOnlyRepository, TokenController tokenController)
     {
         _userWriteRepository = userWriteRepository;
         _mapper = mapper;
         _unitOfWork = unitOfWork;
         _passwordEncrypter = passwordEncrypter;
         _userReadOnlyRepository = userReadOnlyRepository;
+        _tokenController = tokenController;
     }
 
     public async Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request)
@@ -32,7 +33,7 @@ public class UserRegisterUseCase : IUserRegisterUseCase
         await Validate(request);
 
         var user = _mapper.Map<Domain.Entities.User>(request);
-        user.Password = _passwordEncrypter.Encrypt(user.Password);
+        user.Password = _passwordEncrypter.Encrypt(request.Password);
 
         await _userWriteRepository.Add(user);
 
