@@ -1,4 +1,5 @@
-﻿using DigitalBank.Application.UseCases.User.Register;
+﻿using DigitalBank.Application.UseCases.User.Login;
+using DigitalBank.Application.UseCases.User.Register;
 using DigitalBank.Communication.Requests;
 using DigitalBank.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ namespace DigitalBank.API.Controllers;
 [ApiController]
 public class UserController : ControllerBase
 {
-    [HttpPost]
+    [HttpPost("register")]
     [ProducesResponseType(typeof(ResponseRegisterUserJson), StatusCodes.Status201Created)]
     public async Task<IActionResult> RegisterUser(
         [FromServices] IUserRegisterUseCase usecase, 
@@ -18,5 +19,16 @@ public class UserController : ControllerBase
     {
         var result = await usecase.Execute(request);
         return Created(string.Empty, result);
+    }
+
+    [HttpPost("login")]
+    [ProducesResponseType(typeof(ResponseLoginJson), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Login(
+        [FromServices] ILoginUseCase usecase,
+        [FromBody] RequestLoginJson request
+        )
+    {
+        var result = await usecase.Execute(request);
+        return Ok(result);
     }
 }
