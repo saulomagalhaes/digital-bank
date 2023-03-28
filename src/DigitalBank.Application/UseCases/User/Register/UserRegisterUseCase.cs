@@ -4,6 +4,7 @@ using DigitalBank.Application.Services.Token;
 using DigitalBank.Communication.Requests;
 using DigitalBank.Communication.Responses;
 using DigitalBank.Domain.Repositories;
+using DigitalBank.Exceptions;
 using DigitalBank.Exceptions.ExceptionsBase;
 
 namespace DigitalBank.Application.UseCases.User.Register;
@@ -11,22 +12,24 @@ namespace DigitalBank.Application.UseCases.User.Register;
 public class UserRegisterUseCase : IUserRegisterUseCase
 {
     private readonly IUserWriteOnlyRepository _userWriteRepository;
+    private readonly IUserReadOnlyRepository _userReadOnlyRepository;
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
     private readonly PasswordEncrypter _passwordEncrypter;
     private readonly TokenController _tokenController;
 
-    public UserRegisterUseCase(IUserWriteOnlyRepository userWriteRepository, IMapper mapper, IUnitOfWork unitOfWork, PasswordEncrypter passwordEncrypter)
+    public UserRegisterUseCase(IUserWriteOnlyRepository userWriteRepository, IMapper mapper, IUnitOfWork unitOfWork, PasswordEncrypter passwordEncrypter, IUserReadOnlyRepository userReadOnlyRepository)
     {
         _userWriteRepository = userWriteRepository;
         _mapper = mapper;
         _unitOfWork = unitOfWork;
         _passwordEncrypter = passwordEncrypter;
+        _userReadOnlyRepository = userReadOnlyRepository;
     }
 
     public async Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request)
     {
-        Validate(request);
+        await Validate(request);
 
         var user = _mapper.Map<Domain.Entities.User>(request);
         user.Password = _passwordEncrypter.Encrypt(user.Password);
@@ -43,13 +46,20 @@ public class UserRegisterUseCase : IUserRegisterUseCase
         };
     }
 
-    private void Validate(RequestRegisterUserJson request)
+    private async Task Validate(RequestRegisterUserJson request)
     {
-        var validator = new UserRegisterValidator().Validate(request);
+        var validator = new UserRegisterValidator();
+        var result = validator.Validate(request);
 
-        if (!validator.IsValid)
+        var userExistsWithEmail = await _userReadOnlyRepository.UserExistsWithEmail(request.Email);
+        if (userExistsWithEmail)
         {
-            var errorMessages = validator.Errors.Select(error => error.ErrorMessage).ToList();
+            result.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ResourceErrorMessages.EMAIL_JA_CADASTRADO));
+        }
+
+        if (!result.IsValid)
+        {
+            var errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
             throw new ValidationsErrorException(errorMessages);
         }
     }
