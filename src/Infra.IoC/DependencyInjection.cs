@@ -18,7 +18,7 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserReadOnlyRepository, UserRepository>()
             .AddScoped<IUserWriteOnlyRepository, UserRepository>()
-            .AddScoped<IUpdateOnlyRepository, UserRepository>();
+            .AddScoped<IUserUpdateOnlyRepository, UserRepository>();
         
         return services;
     }

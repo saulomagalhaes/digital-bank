@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DigitalBank.Infra.Repositories;
 
-public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository, IUpdateOnlyRepository
+public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository, IUserUpdateOnlyRepository
 {
     private readonly DigitalBankContext _context;
 
