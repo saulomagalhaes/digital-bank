@@ -1,4 +1,5 @@
 ﻿using DigitalBank.Application.Services.Cryptography;
+using DigitalBank.Application.Services.LoggedInUser;
 using DigitalBank.Application.Services.Token;
 using DigitalBank.Application.UseCases.User.Login;
 using DigitalBank.Application.UseCases.User.Register;
@@ -29,7 +30,8 @@ public static class DependencyInjection
         var sectionKeyToken = configuration.GetRequiredSection("Settings:KeyToken");
 
         services.AddScoped(option => new PasswordEncrypter())
-            .AddScoped(option => new TokenController(int.Parse(sectionLifeTimeToken.Value), sectionKeyToken.Value));
+            .AddScoped(option => new TokenController(int.Parse(sectionLifeTimeToken.Value), sectionKeyToken.Value))
+            .AddScoped<ILoggedInUser, LoggedInUser>();
 
         services.AddScoped<IUserRegisterUseCase, UserRegisterUseCase>()
             .AddScoped<ILoginUseCase, LoginUseCase>();

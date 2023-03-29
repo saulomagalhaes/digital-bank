@@ -115,6 +115,15 @@ namespace DigitalBank.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A senha atual é inválida..
+        /// </summary>
+        public static string SENHA_ATUAL_INVALIDA {
+            get {
+                return ResourceManager.GetString("SENHA_ATUAL_INVALIDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A senha deve conter no mínimo 6 caracteres..
         /// </summary>
         public static string SENHA_USUARIO_MINIMO_SEIS_CARACTERES {
