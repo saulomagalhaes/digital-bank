@@ -4,6 +4,7 @@ using DigitalBank.Application.Services.Token;
 using DigitalBank.Communication.Requests;
 using DigitalBank.Communication.Responses;
 using DigitalBank.Domain.Repositories;
+using DigitalBank.Domain.Repositories.User;
 using DigitalBank.Exceptions;
 using DigitalBank.Exceptions.ExceptionsBase;
 

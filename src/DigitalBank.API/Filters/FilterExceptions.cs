@@ -3,7 +3,6 @@ using DigitalBank.Exceptions;
 using DigitalBank.Exceptions.ExceptionsBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System.Net;
 
 namespace DigitalBank.API.Filters;
 

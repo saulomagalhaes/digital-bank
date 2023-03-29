@@ -1,6 +1,4 @@
-﻿using System.Security.Principal;
-
-namespace DigitalBank.Domain.Entities;
+﻿namespace DigitalBank.Domain.Entities;
 
 public class User
 {
