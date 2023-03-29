@@ -1,4 +1,5 @@
-﻿using DigitalBank.Application.UseCases.User.Login;
+﻿using DigitalBank.Application.UseCases.Login;
+using DigitalBank.Application.UseCases.User.ChangePassword;
 using DigitalBank.Application.UseCases.User.Register;
 using DigitalBank.Communication.Requests;
 using DigitalBank.Communication.Responses;
@@ -6,11 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalBank.API.Controllers;
 
-[Route("[controller]")]
-[ApiController]
-public class UserController : ControllerBase
+public class UserController : DigitalBankController
 {
-    [HttpPost("register")]
+    [HttpPost]
     [ProducesResponseType(typeof(ResponseRegisterUserJson), StatusCodes.Status201Created)]
     public async Task<IActionResult> RegisterUser(
         [FromServices] IUserRegisterUseCase usecase, 
@@ -21,14 +20,14 @@ public class UserController : ControllerBase
         return Created(string.Empty, result);
     }
 
-    [HttpPost("login")]
-    [ProducesResponseType(typeof(ResponseLoginJson), StatusCodes.Status200OK)]
-    public async Task<IActionResult> Login(
-        [FromServices] ILoginUseCase usecase,
-        [FromBody] RequestLoginJson request
+    [HttpPut("change-password")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> ChangePassword(
+        [FromServices] IChangePasswordUseCase usecase,
+        [FromBody] RequestChangePasswordJson request
         )
     {
-        var result = await usecase.Execute(request);
-        return Ok(result);
+        await usecase.Execute(request);
+        return NoContent();
     }
 }
