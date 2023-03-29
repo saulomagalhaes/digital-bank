@@ -18,6 +18,5 @@ public class UserRegisterValidator : AbstractValidator<RequestRegisterUserJson>
 
         RuleFor(u => u.Password).NotEmpty().WithMessage(ResourceErrorMessages.SENHA_USUARIO_VAZIO);
         RuleFor(u => u.Password.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceErrorMessages.SENHA_USUARIO_MINIMO_SEIS_CARACTERES);
-
     }
 }
