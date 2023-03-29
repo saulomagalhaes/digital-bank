@@ -144,4 +144,10 @@
   <data name="SENHA_USUARIO_VAZIO" xml:space="preserve">
     <value>A senha do usuário deve ser informada.</value>
   </data>
+  <data name="TOKEN_EXPIRADO" xml:space="preserve">
+    <value>Faça login novamente no App.</value>
+  </data>
+  <data name="USUARIO_SEM_PERMISSAO" xml:space="preserve">
+    <value>Voce não tem permissão para acessar este recurso.</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using DigitalBank.Application.UseCases.Login;
+﻿using DigitalBank.API.Filters;
+using DigitalBank.Application.UseCases.Login;
 using DigitalBank.Application.UseCases.User.ChangePassword;
 using DigitalBank.Application.UseCases.User.Register;
 using DigitalBank.Communication.Requests;
@@ -22,6 +23,7 @@ public class UserController : DigitalBankController
 
     [HttpPut("change-password")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ServiceFilter(typeof(AuthenticatedUserAttribute))]
     public async Task<IActionResult> ChangePassword(
         [FromServices] IChangePasswordUseCase usecase,
         [FromBody] RequestChangePasswordJson request

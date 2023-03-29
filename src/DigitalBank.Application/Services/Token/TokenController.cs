@@ -55,7 +55,6 @@ public class TokenController
 
         var claims = tokenHandler.ValidateToken(token, parametersValidation, out _);
         return claims;
-
     }
 
     public string RecoverEmail(string token)
