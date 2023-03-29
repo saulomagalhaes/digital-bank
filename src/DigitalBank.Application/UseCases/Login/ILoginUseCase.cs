@@ -1,7 +1,7 @@
 ﻿using DigitalBank.Communication.Requests;
 using DigitalBank.Communication.Responses;
 
-namespace DigitalBank.Application.UseCases.User.Login;
+namespace DigitalBank.Application.UseCases.Login;
 
 public interface ILoginUseCase
 {

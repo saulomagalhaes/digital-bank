@@ -5,7 +5,7 @@ using DigitalBank.Communication.Responses;
 using DigitalBank.Domain.Repositories.User;
 using DigitalBank.Exceptions.ExceptionsBase;
 
-namespace DigitalBank.Application.UseCases.User.Login;
+namespace DigitalBank.Application.UseCases.Login;
 
 public class LoginUseCase : ILoginUseCase
 {
@@ -26,7 +26,7 @@ public class LoginUseCase : ILoginUseCase
 
         var user = await _userReadOnlyRepository.Login(request.Email, encryptedPassword);
 
-        if(user == null)
+        if (user == null)
         {
             throw new LoginInvalidException();
         }

@@ -1,7 +1,7 @@
 ﻿using DigitalBank.Application.Services.Cryptography;
 using DigitalBank.Application.Services.LoggedInUser;
 using DigitalBank.Application.Services.Token;
-using DigitalBank.Application.UseCases.User.Login;
+using DigitalBank.Application.UseCases.Login;
 using DigitalBank.Application.UseCases.User.Register;
 using DigitalBank.Domain.Repositories;
 using DigitalBank.Domain.Repositories.User;
