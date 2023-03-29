@@ -1,11 +1,11 @@
 ﻿using DigitalBank.Domain.Entities;
-using DigitalBank.Domain.Repositories;
+using DigitalBank.Domain.Repositories.User;
 using DigitalBank.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DigitalBank.Infra.Repositories;
 
-public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository
+public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository, IUpdateOnlyRepository
 {
     private readonly DigitalBankContext _context;
 
@@ -24,6 +24,11 @@ public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository
         return await _context.Users
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Email == email && x.Password == password);
+    }
+
+    public void Update(User user)
+    {
+       _context.Users.Update(user);
     }
 
     public async Task<bool> UserExistsWithEmail(string email)

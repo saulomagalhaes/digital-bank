@@ -3,6 +3,7 @@ using DigitalBank.Application.Services.Token;
 using DigitalBank.Application.UseCases.User.Login;
 using DigitalBank.Application.UseCases.User.Register;
 using DigitalBank.Domain.Repositories;
+using DigitalBank.Domain.Repositories.User;
 using DigitalBank.Infra.Context;
 using DigitalBank.Infra.Repositories;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +17,8 @@ public static class DependencyInjection
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserReadOnlyRepository, UserRepository>()
-            .AddScoped<IUserWriteOnlyRepository, UserRepository>();
+            .AddScoped<IUserWriteOnlyRepository, UserRepository>()
+            .AddScoped<IUpdateOnlyRepository, UserRepository>();
         
         return services;
     }
