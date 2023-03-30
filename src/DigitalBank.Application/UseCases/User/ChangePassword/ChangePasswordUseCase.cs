@@ -28,7 +28,7 @@ public class ChangePasswordUseCase : IChangePasswordUseCase
 
     public async Task Execute(RequestChangePasswordJson request)
     {
-        var loggedInUser = _loggedInUser.RecoverUser();
+        var loggedInUser = await _loggedInUser.RecoverUser();
 
         var user = await _userReadRepository.GetUserById(loggedInUser.Id);
 

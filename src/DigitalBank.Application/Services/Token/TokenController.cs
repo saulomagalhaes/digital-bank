@@ -6,7 +6,7 @@ namespace DigitalBank.Application.Services.Token;
 
 public class TokenController
 {
-    private const string EmailAlias = "email";
+    private const string EmailAlias = "eml";
     private readonly int _lifetimeInMinutes;
     private readonly string _securityKey;
 

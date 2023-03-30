@@ -2,6 +2,7 @@
 using DigitalBank.Application.Services.LoggedInUser;
 using DigitalBank.Application.Services.Token;
 using DigitalBank.Application.UseCases.Login;
+using DigitalBank.Application.UseCases.User.ChangePassword;
 using DigitalBank.Application.UseCases.User.Register;
 using DigitalBank.Domain.Repositories;
 using DigitalBank.Domain.Repositories.User;
@@ -34,7 +35,9 @@ public static class DependencyInjection
             .AddScoped<ILoggedInUser, LoggedInUser>();
 
         services.AddScoped<IUserRegisterUseCase, UserRegisterUseCase>()
-            .AddScoped<ILoginUseCase, LoginUseCase>();
+            .AddScoped<ILoginUseCase, LoginUseCase>()
+            .AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
+
         return services;
     }
 }
